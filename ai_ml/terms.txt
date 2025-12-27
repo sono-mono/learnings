@@ -52,3 +52,13 @@ Technical Components:
 - Language Model: Generates final response (e.g., GPT-4, LLaMA)
 - Re-ranker (optional): Improves ranking of retrieved documents for better quality
 
+so lets talk about the context window , so context window is nothing but the no of tokens a llm can keep track of. its like what the llm gives attention to while generating next response. soething outside og its context window it cannot keep track of.  in ai agents the llm has no memory of its own and no awarness beyond the past context . so it stores the data for its memory across different data bases and when ever it need to use that information it injects it into its context window 
+now lets talk about mcp servers
+before that lets talko about rag so rag is a technique to retrive data from an vector data bast to provid to an llm . becuase we know llm are generalistic in nature and they dont provide specific data because of how they function so what we do is we connect it to a data base that has all the data and when use asks something it retrives the useful chunk of data and provides to llm . now how does a RAG actually works when user asks a query then based on that query useful chunks of data is retrived from that vector data base and provided to llm context window with context and the given to llm the chunks and the  query
+we can also se contxt window this way all the things the llm can keep in mind at once
+an llm is limited by two things its context window and training data so what we do is we connect it to external softwares and retrive the data whenever we need an dput it into its context window
+so we have a host that connectes to a mcp client that connects to a mcp server that coneecst to various things like data base , api and etc
+it connects through json-rpc 2.0
+
+RAG and MCP are the two ways we give access to data
+llm predicts the next token in a sequence using a statistical pattern matching technique 
