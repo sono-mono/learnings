@@ -1,0 +1,125 @@
+Mind Map: RAG vs Agentic AI (IBM Technology Video)
+
+RAG vs Agentic AI
+├─ 1. Motivation: Why more than just an LLM?
+│  ├─ LLM strengths: fluent text generation
+│  ├─ LLM limitations
+│  │  ├─ No direct access to private/org data
+│  │  ├─ Can be out of date
+│  │  └─ Can hallucinate
+│  └─ Need: combine LLMs with data access + actions
+│
+├─ 2. RAG (Retrieval-Augmented Generation)
+│  ├─ Goal: Ground LLM answers in external data
+│  ├─ Pipeline
+│  │  ├─ Ingestion & indexing
+│  │  │  ├─ Collect documents (PDFs, web, DBs, KBs)
+│  │  │  ├─ Chunk documents
+│  │  │  ├─ Create embeddings per chunk
+│  │  │  └─ Store in vector DB / retrieval index
+│  │  ├─ Retrieval at query time
+│  │  │  ├─ Embed user query
+│  │  │  └─ Retrieve top-k relevant chunks
+│  │  └─ Augmented generation
+│  │     ├─ Attach retrieved chunks to prompt
+│  │     └─ LLM answers using provided context
+│  ├─ Benefits
+│  │  ├─ Uses your data without retraining base LLM
+│  │  ├─ Easy to update (re-index documents)
+│  │  ├─ Reduces hallucinations
+│  │  └─ Enables citations / traceability
+│  └─ Typical use cases
+│     ├─ Q&A over documents
+│     ├─ Chat with knowledge bases
+│     └─ Enterprise search
+│
+├─ 3. Limitations of RAG alone
+│  ├─ Mostly "retrieve + answer" pattern
+│  ├─ Typically single-turn or short-lived
+│  ├─ Does NOT by itself
+│  │  ├─ Plan multi-step workflows
+│  │  ├─ Call tools/APIs to act
+│  │  └─ Maintain long-running state/goals
+│  └─ Great for answers, not full processes
+│
+├─ 4. Agentic AI
+│  ├─ Concept: LLM as reasoning + orchestration engine
+│  ├─ Agent capabilities
+│  │  ├─ Goal understanding (high-level objectives)
+│  │  ├─ Planning (decompose into steps)
+│  │  ├─ Tool selection and invocation
+│  │  │  ├─ RAG search
+│  │  │  ├─ Databases / analytics
+│  │  │  ├─ Business APIs (CRM, ERP, etc.)
+│  │  │  ├─ RPA / automation tools
+│  │  │  └─ Communication tools (email, calendar)
+│  │  ├─ Observation (read tool outputs/results)
+│  │  └─ Iteration (update plan, continue or stop)
+│  ├─ Agent loop
+│  │  └─ Observe → Think/Plan → Act → Repeat
+│  └─ Typical use cases
+│     ├─ Process automation
+│     ├─ Multi-step workflows
+│     └─ Decision support and orchestration
+│
+├─ 5. RAG vs Agentic AI – Comparison
+│  ├─ RAG
+│  │  ├─ Focus: better answers via grounding in data
+│  │  ├─ Operation: retrieve top-k chunks + generate
+│  │  ├─ Scope: single question or short conversation
+│  │  └─ Role: knowledge access layer
+│  └─ Agentic AI
+│     ├─ Focus: achieve goals via multi-step actions
+│     ├─ Operation: plan → choose tools (incl. RAG) → execute → adjust
+│     ├─ Scope: stateful, long-running, cross-system workflows
+│     └─ Role: orchestration / control layer
+│
+├─ 6. How RAG and Agentic AI work together
+│  ├─ RAG as a tool inside an agent
+│  │  ├─ Agent decides when to call RAG
+│  │  └─ RAG provides grounded knowledge snippets
+│  ├─ Example (customer health summary)
+│  │  ├─ Agent plan
+│  │  │  ├─ Identify customer & timeframe
+│  │  │  ├─ Fetch interactions (tickets, calls)
+│  │  │  ├─ Summarize issues & status
+│  │  │  └─ Recommend follow-up actions
+│  │  ├─ Agent calls RAG on
+│  │  │  ├─ Support tickets & transcripts
+│  │  │  ├─ Product docs / SLAs
+│  │  │  └─ Internal playbooks
+│  │  └─ Agent then
+│  │     ├─ Calls CRM / analytics APIs
+│  │     ├─ Prepares report
+│  │     └─ Triggers follow-up (e.g., email, task)
+│  └─ Relationship
+│     ├─ RAG: "How to access and ground in the right data"
+│     └─ Agentic AI: "How to use tools & data to complete a task"
+│
+├─ 7. Architectural view
+│  ├─ Data layer
+│  │  ├─ Source systems (docs, DBs, apps, logs)
+│  │  ├─ Ingestion & transformation
+│  │  ├─ Chunking & embedding
+│  │  └─ Vector DB / retrieval service
+│  ├─ Model layer
+│  │  ├─ Foundation LLM
+│  │  └─ Embedding model
+│  ├─ Orchestration / Agent layer
+│  │  ├─ Planning & control logic
+│  │  ├─ Tool interfaces (RAG, APIs, RPA, etc.)
+│  │  └─ State & memory for workflows
+│  └─ Experience layer
+│     ├─ Chat UIs, apps, dashboards
+│     ├─ Guardrails & policies
+│     └─ Monitoring & observability
+│
+└─ 8. When to use what
+   ├─ RAG-focused solutions
+   │  ├─ Need: accurate answers over content
+   │  ├─ Tasks: Q&A, doc search, grounded chat
+   │  └─ Fast to implement by indexing existing docs
+   └─ Agentic AI solutions
+      ├─ Need: multi-step, cross-system workflows
+      ├─ Tasks: automation and orchestration
+      └─ Combine with RAG to use knowledge along the way

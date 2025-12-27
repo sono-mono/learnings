@@ -1,1 +1,54 @@
 Terms that are useful for better understanding of ai/ml
+
+
+RAG (Retrieval-Augmented Generation):
+======================================
+
+RAG is a technique that combines the power of retrieval systems with generative language models. It enhances the capabilities of large language models (LLMs) by allowing them to access and utilize external knowledge sources in real-time.
+
+How RAG Works:
+--------------
+
+1. RETRIEVAL PHASE:
+   - User query is received by the system
+   - A retriever component searches a knowledge base or document collection
+   - The retriever uses semantic similarity (usually embeddings) to find relevant documents
+   - Top-k most relevant documents/chunks are selected based on similarity scores
+
+2. AUGMENTATION PHASE:
+   - Retrieved documents are combined with the original user query
+   - The relevant context is formatted and prepared to feed to the language model
+   - This augmented prompt includes both the query and the retrieved information
+
+3. GENERATION PHASE:
+   - The language model (LLM) receives the augmented prompt
+   - The model generates a response based on both the query and retrieved context
+   - This ensures the generated answer is grounded in actual information from the knowledge base
+   - The model can cite sources and provide accurate, contextually relevant answers
+
+Key Benefits of RAG:
+--------------------
+- Reduces hallucination: LLM grounds responses in real data
+- Up-to-date information: Can retrieve from current documents/databases
+- Better accuracy: Answers backed by specific sources
+- Traceability: Responses can cite where information came from
+- Customizable: Can work with domain-specific knowledge bases
+- Cost-effective: More efficient than fine-tuning for adding new knowledge
+
+Common Use Cases:
+-----------------
+- Question answering over documents
+- Customer support systems with company-specific knowledge
+- Legal and medical document analysis
+- Research and literature review assistance
+- Product documentation systems
+- FAQ systems with dynamic knowledge bases
+
+Technical Components:
+---------------------
+- Embedding Model: Converts text to numerical representations for similarity matching
+- Vector Database: Stores embeddings for fast retrieval (e.g., Pinecone, Weaviate, FAISS)
+- Retriever: Algorithm that finds relevant documents (dense or sparse retrieval)
+- Language Model: Generates final response (e.g., GPT-4, LLaMA)
+- Re-ranker (optional): Improves ranking of retrieved documents for better quality
+
